@@ -81,7 +81,7 @@ dossier Téléchargements de l'ordinateur réel, pas dans le système de fichier
 - B : corriger seulement en amont (issue et PR préparées par Claude, publiées par Benoit) ;
   Kazo Pdf sort sur 3.3.3 avec la limite écrite dans la fiche jusqu'à la version de PdfCraft qui
   la corrige.
-- C : corriger dans notre fork (chantier 3), donc un build modifié dès la v1 (retrait des marques
+- C : corriger dans notre fork (chantier 2), donc un build modifié dès la v1 (retrait des marques
   ArtCraft).
 
 **Q2. Les modèles OCR (12,2 Mo, `CC-BY-SA-4.0`).**

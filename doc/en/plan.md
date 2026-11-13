@@ -79,7 +79,7 @@ file system.
   through `save` in host mode), which Benoit publishes.
 - B: fix upstream only (issue and PR prepared by Claude, published by Benoit); Kazo Pdf ships on
   3.3.3 with the limit written in the listing until the PdfCraft version that fixes it.
-- C: fix in our fork (work item 3), hence a modified build from v1 (ArtCraft marks removed).
+- C: fix in our fork (work item 2), hence a modified build from v1 (ArtCraft marks removed).
 
 **Q2. The OCR models (12.2 MB, `CC-BY-SA-4.0`).**
 
