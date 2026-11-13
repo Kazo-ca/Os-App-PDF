@@ -65,6 +65,7 @@ official zip `pdfcraft-web-0.21.1.zip`.
 | 7 | Theme and language | `ui.set { theme }` on every OS theme change, `ui.set { language }` at startup (`CraftLanguage.Pick` on the list of 26 codes). |
 | 8 | File picker | The module does not say why PdfCraft asks for a file (open, insert pages, compare, image to place…). Every picked file is handed to PdfCraft; a single picked `.pdf` is bound to the window under its name only when no document already has that name. |
 | 9 | Benoit's answers (2026-11-13) | Q1 = **A** (the module intercepts exports, ADR 0264 in `Kazo-ca/Os`), Q2 = **A** (OCR models in the package), Q3 = **B** (`.pdf` only). |
+| 10 | Exports | PdfCraft exports through an `<a download>` link: the Kazo OS Craft module hands them to the window (`CraftFrame.Exporting`, [ADR 0264](https://github.com/Kazo-ca/Os/blob/craft-exports/base/doc/en/wasm/dev/adr/0264-craft-app-exports-reach-the-window.md), series `craft-exports/base` of `Kazo-ca/Os`), which always saves them as **copies** (`DocumentSession.DecideCopy`), even a `.pdf`. So Kazo Pdf asks for the OS version that brings ADR 0264; until then, its OS submodule follows the branch of that work. |
 
 ## Questions asked to Benoit
 
@@ -132,4 +133,5 @@ Texts prepared by Claude in English, published by Benoit (no mention of an agent
 - [x] Benoit's answers to Q1, Q2 and Q3 (A, A, B).
 - [x] Work item 1: solution and window (`pdf/1-solution`).
 - [x] Work item 2: build from the fork `Kazo-ca/pdfcraft` (`pdf/2-build-from-source`).
-- [ ] Work items 3 and 4.
+- [x] Work item 3: exports as copies (`pdf/3-exports`, Kazo OS ADR 0264).
+- [ ] Work item 4.

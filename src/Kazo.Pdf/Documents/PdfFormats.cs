@@ -11,9 +11,8 @@ namespace Kazo.Pdf.Documents;
 /// PdfCraft saves a document as <c>.pdf</c> only. An image or a text file picked in the window
 /// opens as a new PDF named after it (<c>scan.png</c> becomes <c>scan.pdf</c>): its save carries
 /// another name than the file's, so the session asks for a path and never writes PDF bytes over
-/// the image. PdfCraft's
-/// exports do not reach the window in 0.21.1 (they are browser downloads, Q1), so no format here is
-/// a copy.
+/// the image. PdfCraft's exports (Export, Print to PDF…) reach the window apart from its saves
+/// (<c>CraftFrame.Exporting</c>, Q1) and are always copies, so no format here is a copy.
 /// </remarks>
 public static class PdfFormats
 {

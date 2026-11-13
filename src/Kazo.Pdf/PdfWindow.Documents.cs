@@ -195,6 +195,30 @@ public sealed partial class PdfWindow : IWindowCloseGuard
         return written;
     }
 
+    // One file PdfCraft exports (Export, Print to PDF, Reduce size, OCR, form data…; ADR 0264 of
+    // Kazo OS): always a copy in the document's folder, even when it is a .pdf, so the window stays
+    // bound to its document. It does not wait for the save gate: it never touches the document.
+    private async Task<bool> OnExportingAsync(FrameSave export)
+    {
+        // Called from JavaScript ([JSInvokable]): the app's scope must be entered for KazoFile.
+        using IDisposable scope = KazoExecutionContext.Enter(AppContext);
+        if (string.IsNullOrEmpty(export.Name))
+        {
+            return false;
+        }
+
+        SaveDecision decision = _session.DecideCopy(export.Name);
+        try
+        {
+            return await CarryOutAsync(decision, export.Bytes);
+        }
+        catch (Exception exception) when (exception is not OperationCanceledException)
+        {
+            await ShowNoticeAsync(L["SaveFailed", export.Name, exception.Message], error: true);
+            return false;
+        }
+    }
+
     private async Task<bool> SaveAsync(FrameSave save)
     {
         if (string.IsNullOrEmpty(save.Name))
