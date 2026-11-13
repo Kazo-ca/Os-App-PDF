@@ -130,4 +130,5 @@ Texts prepared by Claude in English, published by Benoit (no mention of an agent
 - [x] Step 0: reading PdfCraft 0.21.1 and the official zip.
 - [x] Plan fr and en.
 - [x] Benoit's answers to Q1, Q2 and Q3 (A, A, B).
-- [ ] Work items 1 to 4.
+- [x] Work item 1: solution and window (`pdf/1-solution`).
+- [ ] Work items 2 to 4.

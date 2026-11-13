@@ -1,0 +1,27 @@
+{
+  "version": "0.21.1",
+  "source": {
+    "kind": "release-zip",
+    "url": "https://github.com/storytold/pdfcraft/releases/download/v0.21.1/pdfcraft-web-0.21.1.zip",
+    "sha256": "fe9708d46af191aebb56f70eb32cf8b112b0b9452d17ae6ba3a8c4a8665fe748"
+  },
+  "glue": "pdfcraft-web-dbf16682ba914f2f.js",
+  "wasm": "pdfcraft-web-dbf16682ba914f2f_bg.wasm",
+  "worker": "pdfcraft-ocr-worker-b363fe94bbdd0923_loader.js",
+  "files": [
+    { "path": "LICENSE-APACHE", "size": 10174, "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594" },
+    { "path": "LICENSE-MIT", "size": 1100, "sha256": "cd7032ea33b71427f188e34ffb4aee9d6868a57fd196037c5c8b2be03a2a0352" },
+    { "path": "NOTICE", "size": 7922, "sha256": "a7620386409bc691c7e223917db186ec447362f655fd81a1196d9853dcac1330" },
+    { "path": "models/ATTRIBUTION.txt", "size": 1134, "sha256": "0586352bd8163e4bdcaf1c3016844149df6f1f3b01b1ba963220ce8ecdf54ae1" },
+    { "path": "models/text-detection.onnx", "size": 2499479, "sha256": "a917b23dbd9524b465df7e922641b3ff2981623df4ded5a0234004ef2fee7cfe" },
+    { "path": "models/text-detection.onnx.LICENCE.txt", "size": 20138, "sha256": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5" },
+    { "path": "models/text-recognition.onnx", "size": 9713177, "sha256": "86c145c2edb96c8caed5b1ebb8f44d706408922211451c309c625157dd6061c5" },
+    { "path": "models/text-recognition.onnx.LICENCE.txt", "size": 20138, "sha256": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5" },
+    { "path": "pdfcraft-ocr-worker-b363fe94bbdd0923.js", "size": 13118, "sha256": "cfe89544c8d4acd5bf778be854202dc1e4b5b934702081e1023b0733fa0e542e" },
+    { "path": "pdfcraft-ocr-worker-b363fe94bbdd0923_bg.wasm", "size": 3383385, "sha256": "857f77c4ed7e66236c5b37f7196029cf17eca9e575513cb315a611331a324fb6" },
+    { "path": "pdfcraft-ocr-worker-b363fe94bbdd0923_loader.js", "size": 74, "sha256": "6b368d6cf8e7e36691e9b4c6fa65f673c5330e6851a46b662d44240802073007" },
+    { "path": "pdfcraft-web-dbf16682ba914f2f.js", "size": 182585, "sha256": "84be0ee5db2429760c8685cd119dc79b71f0dc8fa6005cf33b60adefeecd0cd0" },
+    { "path": "pdfcraft-web-dbf16682ba914f2f_bg.wasm", "size": 60639389, "sha256": "6b8304c45b7e27a6f9959e08c0346cc02e99d01c2f678837c2e592606aa82ef4" },
+    { "path": "snippets/eframe-d31a8450ea12dfc1/inline0.js", "size": 280, "sha256": "22a98f9d0c5a0532d291bdc9a3050439420b3d11143b4568fcfd3c66fff36995" }
+  ]
+}

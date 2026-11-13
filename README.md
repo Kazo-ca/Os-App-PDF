@@ -1,15 +1,17 @@
 > [Version française](readme-fr.md)
 
-# Kazo.Os.App
+# Kazo Pdf
 
-A Kazo OS app repository, made with the `kazoos-solution` template.
+The PDF reader and editor of Kazo OS, built on [PdfCraft](https://github.com/storytold/pdfcraft) (ArtCraft team). Work in progress: see the [plan](doc/en/plan.md). This repository was made with the `kazoos-solution` template; the Store listing replaces this page at the Store work item.
 
 | Folder | Content |
 | --- | --- |
-| `src/Kazo.Os.App` | The app (window app, its `[AppManifest]` class generates `manifest.json`) |
-| `src/Kazo.Os.App.Os` | A host that runs the whole Kazo OS with the base apps and this app: the project to start |
-| `tests/Kazo.Os.App.Tests` | Tests of the app |
+| `src/Kazo.Pdf` | The app (window app, its `[AppManifest]` class generates `manifest.json`) |
+| `src/Kazo.Pdf.Os` | A host that runs the whole Kazo OS with the base apps and this app: the project to start |
+| `tests/Kazo.Pdf.Tests` | Tests of the app (xUnit) |
+| `tests/e2e` | End-to-end runs in the Kazo OS host (Playwright): `npm run test:e2e` after `dotnet build Kazo.Pdf.slnx -c Debug` |
 | `external/KazoOs` | The Kazo OS repository as a git submodule, on a release tag |
+| `src/Kazo.Pdf/wwwroot/pdfcraft` | The PdfCraft web build and its provenance `pdfcraft.json`, written by `tools/vendor-pdfcraft.sh`, never edited by hand |
 | `store/` | What the Kazo OS Store shows: icon (PNG 256×256), short descriptions, descriptions, `store.json` |
 
 ## First steps
@@ -24,8 +26,8 @@ git submodule add --depth 1 https://github.com/Kazo-ca/Os.git external/KazoOs
 git -C external/KazoOs checkout v<Kazo OS version>
 ```
 
-Then open the `.sln` in Visual Studio or Rider and start `Kazo.Os.App.Os`, or run
-`dotnet run --project src/Kazo.Os.App.Os`.
+Then open `Kazo.Pdf.slnx` in Visual Studio or Rider and start `Kazo.Pdf.Os`, or run
+`dotnet run --project src/Kazo.Pdf.Os`.
 
 ## The Kazo OS version
 
