@@ -65,7 +65,7 @@ zip officiel `pdfcraft-web-0.21.1.zip`.
 | 7 | Thème et langue | `ui.set { theme }` à chaque changement du thème de l'OS, `ui.set { language }` au démarrage (`CraftLanguage.Pick` sur la liste des 26 codes). |
 | 8 | Sélecteur de fichiers | Le module ne dit pas pourquoi PdfCraft demande un fichier (ouvrir, insérer des pages, comparer, image à placer…). Tout fichier choisi est rendu à PdfCraft ; un seul `.pdf` choisi est lié à la fenêtre sous son nom seulement si aucun document ne porte déjà ce nom. |
 | 9 | Réponses de Benoit (2026-11-13) | Q1 = **A** (le module intercepte les exports, ADR 0264 dans `Kazo-ca/Os`), Q2 = **A** (modèles OCR dans le paquet), Q3 = **B** (`.pdf` seulement). |
-| 10 | Exports | PdfCraft exporte par un lien `<a download>` : le module Craft de Kazo OS les remet à la fenêtre (`CraftFrame.Exporting`, [ADR 0264](https://github.com/Kazo-ca/Os/blob/craft-exports/base/doc/fr/wasm/dev/adr/0264-craft-app-exports-reach-the-window.md), série `craft-exports/base` de `Kazo-ca/Os`), qui les enregistre toujours comme **copies** (`DocumentSession.DecideCopy`), même un `.pdf`. Kazo Pdf demande donc la version de l'OS qui apporte l'ADR 0264 ; jusque-là, son sous-module de l'OS suit la branche de ce travail. |
+| 10 | Exports | PdfCraft exporte par un lien `<a download>` : le module Craft de Kazo OS les remet à la fenêtre (`CraftFrame.Exporting`, [ADR 0264](https://github.com/Kazo-ca/Os/blob/main/doc/fr/wasm/dev/adr/0264-craft-app-exports-reach-the-window.md), série `craft-exports/base` de `Kazo-ca/Os`), qui les enregistre toujours comme **copies** (`DocumentSession.DecideCopy`), même un `.pdf`. Kazo Pdf demande donc **Kazo OS 3.3.4**, la version qui apporte l'ADR 0264 (chantier 4). |
 
 ## Questions posées à Benoit
 
@@ -138,4 +138,5 @@ Textes préparés par Claude en anglais, publiés par Benoit (pas de mention d'a
 - [x] Chantier 1 : solution et fenêtre (`pdf/1-solution`).
 - [x] Chantier 2 : build depuis le fork `Kazo-ca/pdfcraft` (`pdf/2-build-from-source`).
 - [x] Chantier 3 : exports comme copies (`pdf/3-exports`, ADR 0264 de Kazo OS).
-- [ ] Chantier 4.
+- [x] Chantier 4 : fiche du Store, avis de tiers, installation dans le Kazo OS 3.3.4 publié (`pdf/4-store`).
+- [ ] Sortie : `pdf/base` dans `main` (Benoit), étiquette `v0.1.0`, catalogue, `features.md`.

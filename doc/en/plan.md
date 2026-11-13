@@ -65,7 +65,7 @@ official zip `pdfcraft-web-0.21.1.zip`.
 | 7 | Theme and language | `ui.set { theme }` on every OS theme change, `ui.set { language }` at startup (`CraftLanguage.Pick` on the list of 26 codes). |
 | 8 | File picker | The module does not say why PdfCraft asks for a file (open, insert pages, compare, image to place…). Every picked file is handed to PdfCraft; a single picked `.pdf` is bound to the window under its name only when no document already has that name. |
 | 9 | Benoit's answers (2026-11-13) | Q1 = **A** (the module intercepts exports, ADR 0264 in `Kazo-ca/Os`), Q2 = **A** (OCR models in the package), Q3 = **B** (`.pdf` only). |
-| 10 | Exports | PdfCraft exports through an `<a download>` link: the Kazo OS Craft module hands them to the window (`CraftFrame.Exporting`, [ADR 0264](https://github.com/Kazo-ca/Os/blob/craft-exports/base/doc/en/wasm/dev/adr/0264-craft-app-exports-reach-the-window.md), series `craft-exports/base` of `Kazo-ca/Os`), which always saves them as **copies** (`DocumentSession.DecideCopy`), even a `.pdf`. So Kazo Pdf asks for the OS version that brings ADR 0264; until then, its OS submodule follows the branch of that work. |
+| 10 | Exports | PdfCraft exports through an `<a download>` link: the Kazo OS Craft module hands them to the window (`CraftFrame.Exporting`, [ADR 0264](https://github.com/Kazo-ca/Os/blob/main/doc/en/wasm/dev/adr/0264-craft-app-exports-reach-the-window.md), series `craft-exports/base` of `Kazo-ca/Os`), which always saves them as **copies** (`DocumentSession.DecideCopy`), even a `.pdf`. So Kazo Pdf asks for **Kazo OS 3.3.4**, the version that brings ADR 0264 (work item 4). |
 
 ## Questions asked to Benoit
 
@@ -134,4 +134,5 @@ Texts prepared by Claude in English, published by Benoit (no mention of an agent
 - [x] Work item 1: solution and window (`pdf/1-solution`).
 - [x] Work item 2: build from the fork `Kazo-ca/pdfcraft` (`pdf/2-build-from-source`).
 - [x] Work item 3: exports as copies (`pdf/3-exports`, Kazo OS ADR 0264).
-- [ ] Work item 4.
+- [x] Work item 4: Store listing, notices, install in the published Kazo OS 3.3.4 (`pdf/4-store`).
+- [ ] Release: `pdf/base` into `main` (Benoit), tag `v0.1.0`, catalogue, `features.md`.
