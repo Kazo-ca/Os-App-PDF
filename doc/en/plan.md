@@ -131,4 +131,5 @@ Texts prepared by Claude in English, published by Benoit (no mention of an agent
 - [x] Plan fr and en.
 - [x] Benoit's answers to Q1, Q2 and Q3 (A, A, B).
 - [x] Work item 1: solution and window (`pdf/1-solution`).
-- [ ] Work items 2 to 4.
+- [x] Work item 2: build from the fork `Kazo-ca/pdfcraft` (`pdf/2-build-from-source`).
+- [ ] Work items 3 and 4.

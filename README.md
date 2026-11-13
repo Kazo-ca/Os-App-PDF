@@ -11,7 +11,8 @@ The PDF reader and editor of Kazo OS, built on [PdfCraft](https://github.com/sto
 | `tests/Kazo.Pdf.Tests` | Tests of the app (xUnit) |
 | `tests/e2e` | End-to-end runs in the Kazo OS host (Playwright): `npm run test:e2e` after `dotnet build Kazo.Pdf.slnx -c Debug` |
 | `external/KazoOs` | The Kazo OS repository as a git submodule, on a release tag |
-| `src/Kazo.Pdf/wwwroot/pdfcraft` | The PdfCraft web build and its provenance `pdfcraft.json`, written by `tools/vendor-pdfcraft.sh`, never edited by hand |
+| `external/pdfcraft` | PdfCraft's sources (our fork `Kazo-ca/pdfcraft`) as a git submodule, only to compile PdfCraft (`tools/build-pdfcraft.sh`, workflow Build PdfCraft) |
+| `src/Kazo.Pdf/wwwroot/pdfcraft` | The PdfCraft web build and its provenance `pdfcraft.json`, written by `tools/build-pdfcraft.sh` (or `tools/vendor-pdfcraft.sh` from the official zip), never edited by hand |
 | `store/` | What the Kazo OS Store shows: icon (PNG 256×256), short descriptions, descriptions, `store.json` |
 
 ## First steps
