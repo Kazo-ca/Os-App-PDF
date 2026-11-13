@@ -134,4 +134,5 @@ Textes préparés par Claude en anglais, publiés par Benoit (pas de mention d'a
 - [x] Étape 0 : lecture de PdfCraft 0.21.1 et du zip officiel.
 - [x] Plan fr et en.
 - [x] Réponses de Benoit à Q1, Q2 et Q3 (A, A, B).
-- [ ] Chantiers 1 à 4.
+- [x] Chantier 1 : solution et fenêtre (`pdf/1-solution`).
+- [ ] Chantiers 2 à 4.
