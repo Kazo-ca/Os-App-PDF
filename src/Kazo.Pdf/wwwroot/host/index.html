@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+  The page of the Kazo Pdf iframe (doc/en/plan.md, decision 4). PdfCraft runs here, in page host
+  mode (data-host="page"). craft-proxy.js, served by Kazo OS with the Kazo.Os.AppSdk.Craft module
+  (ADR 0259), reads data-craft-app and data-craft-build, starts PdfCraft from pdfcraft.json and
+  relays its canvas events to the window through the MessagePort the window hands over.
+
+  The <base> puts every relative address in the build folder (../pdfcraft/): PdfCraft loads its OCR
+  models from models/ and its OCR worker from the <meta name="pdfcraft-ocr-worker"> loader, both
+  relative to the page. tools/vendor-pdfcraft.sh writes the loader's name (it carries a hash). The
+  module's files are siblings of both folders, so ../../Kazo.Os.AppSdk.Craft/ reaches them either
+  way. No inline script or style.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <base href="../pdfcraft/">
+  <title>Kazo Pdf</title>
+  <meta name="pdfcraft-ocr-worker" content="pdfcraft-ocr-worker-08b77b90fe90080f_loader.js">
+  <link rel="stylesheet" href="../../Kazo.Os.AppSdk.Craft/craft-page.css">
+  <script type="module" src="../../Kazo.Os.AppSdk.Craft/craft-proxy.js"></script>
+</head>
+<body>
+  <canvas id="pdfcraft" data-host="page"
+          data-craft-app="pdfcraft" data-craft-build="pdfcraft.json"></canvas>
+</body>
+</html>

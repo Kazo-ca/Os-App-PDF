@@ -1,0 +1,15 @@
+{
+  "name": "kazo-pdf-tests",
+  "private": true,
+  "description": "End-to-end runs of Kazo Pdf in the Kazo OS host (Playwright).",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "store:readme": "node .github/scripts/store-readme.mjs",
+    "test:e2e": "node --test --test-concurrency=1 tests/e2e/*.e2e.mjs",
+    "test:installed": "node tests/installed/install-and-open.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

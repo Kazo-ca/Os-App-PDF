@@ -1,14 +1,27 @@
 # Builds and tests the Release profile: the Kazo OS packages from nuget.org, at the version of the
 # submodule (ADR 0176 §4, §6). This is what the Kazo OS Store compiles.
+#
+# workflow_call lets the PdfCraft build workflow (work item 2) test the branch it pushes, since a
+# push made with the workflow token starts no workflow.
 name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, "pdf/base"]
   pull_request:
+  workflow_call:
+    inputs:
+      ref:
+        description: Branch to check out and test
+        type: string
+        required: true
 
 permissions:
   contents: read
+
+concurrency:
+  group: "ci-${{ inputs.ref || github.ref }}"
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -16,7 +29,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: true
+          ref: ${{ inputs.ref || '' }}
+
+      # Only the Kazo OS submodule: the app uses the PdfCraft build in wwwroot/pdfcraft/, and
+      # PdfCraft's sources (work item 2) are only needed to compile it.
+      - name: Fetch the Kazo OS submodule
+        run: git submodule update --init --depth 1 external/KazoOs
 
       - uses: actions/setup-dotnet@v4
         with:
@@ -25,7 +43,10 @@ jobs:
       - name: Check the Kazo OS submodule
         run: bash .github/scripts/check-kazoos-submodule.sh
 
-      - name: Build (Release, packages)
+      - name: Check the README shows the Store listing
+        run: node .github/scripts/store-readme.mjs --check
+
+      - name: Build (Release)
         run: dotnet build -c Release
 
       - name: Test

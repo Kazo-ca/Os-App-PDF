@@ -9,3 +9,6 @@ artifacts/
 
 # Private keys: never in the repository.
 *.pem
+
+# npm (the end-to-end runs)
+node_modules

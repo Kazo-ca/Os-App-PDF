@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EditorLabel" xml:space="preserve">
+    <value>PDF editor</value>
+  </data>
+  <data name="FailedTitle" xml:space="preserve">
+    <value>PdfCraft could not start</value>
+  </data>
+  <data name="FailedHint" xml:space="preserve">
+    <value>PdfCraft needs WebGL 2 in this browser.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Starting PdfCraft…</value>
+  </data>
+  <data name="LoadingHint" xml:space="preserve">
+    <value>The first start downloads about 64 MB.</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="TimedOut" xml:space="preserve">
+    <value>PdfCraft did not answer within {0} seconds.</value>
+  </data>
+  <data name="PickTitle" xml:space="preserve">
+    <value>Choose a file</value>
+  </data>
+  <data name="PickFilter" xml:space="preserve">
+    <value>Files PdfCraft reads</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>All files</value>
+  </data>
+  <data name="ProblemTitle" xml:space="preserve">
+    <value>Kazo Pdf</value>
+  </data>
+  <data name="ReadFailed" xml:space="preserve">
+    <value>Could not read {0}: {1}</value>
+  </data>
+  <data name="NewWindowFailed" xml:space="preserve">
+    <value>Could not open a new Kazo Pdf window: {0}</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
+  <data name="SaveTitle" xml:space="preserve">
+    <value>Save the document</value>
+  </data>
+  <data name="SaveCopyTitle" xml:space="preserve">
+    <value>Save a copy</value>
+  </data>
+  <data name="FilterFormat" xml:space="preserve">
+    <value>{0} file</value>
+  </data>
+  <data name="OpenFailed" xml:space="preserve">
+    <value>Could not open {0}: {1}</value>
+  </data>
+  <data name="NotConnected" xml:space="preserve">
+    <value>PdfCraft is not started.</value>
+  </data>
+  <data name="NotShown" xml:space="preserve">
+    <value>PdfCraft could not show it</value>
+  </data>
+  <data name="SaveFailed" xml:space="preserve">
+    <value>{0} was not saved: {1}. The document stays modified; the next save asks where to write it.</value>
+  </data>
+  <data name="SaveCancelled" xml:space="preserve">
+    <value>{0} was not saved. The document stays modified.</value>
+  </data>
+  <data name="CopySaved" xml:space="preserve">
+    <value>Copy saved: {0}.</value>
+  </data>
+  <data name="Dismiss" xml:space="preserve">
+    <value>Dismiss the message</value>
+  </data>
+  <data name="CloseTitle" xml:space="preserve">
+    <value>Unsaved changes</value>
+  </data>
+  <data name="CloseUnsaved" xml:space="preserve">
+    <value>Save the changes to {0} before closing? Yes saves, No closes without saving.</value>
+  </data>
+  <data name="CloseUnanswered" xml:space="preserve">
+    <value>PdfCraft does not answer: {0} cannot be saved. Close without saving?</value>
+  </data>
+</root>

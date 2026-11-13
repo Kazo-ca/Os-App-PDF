@@ -2,3 +2,8 @@
 	path = external/KazoOs
 	url = https://github.com/Kazo-ca/Os.git
 	shallow = true
+[submodule "external/pdfcraft"]
+	path = external/pdfcraft
+	url = https://github.com/Kazo-ca/pdfcraft.git
+	branch = kazo/v0.21.1
+	shallow = true
