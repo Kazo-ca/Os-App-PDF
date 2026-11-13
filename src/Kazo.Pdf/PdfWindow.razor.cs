@@ -82,6 +82,7 @@ public sealed partial class PdfWindow : IAsyncDisposable
         frame.Failed += OnFailedAsync;
         frame.DirtyChanged += OnDirtyChangedAsync;
         frame.Saving += OnSavingAsync;
+        frame.Exporting += OnExportingAsync;
         ConnectProxy(frame, connect: true);
         _frame = frame;
         ArmTimeout(_startup.Attempt);
@@ -128,6 +129,7 @@ public sealed partial class PdfWindow : IAsyncDisposable
         _frame.Failed -= OnFailedAsync;
         _frame.DirtyChanged -= OnDirtyChangedAsync;
         _frame.Saving -= OnSavingAsync;
+        _frame.Exporting -= OnExportingAsync;
         ConnectProxy(_frame, connect: false);
         await _frame.DisposeAsync();
         _frame = null;

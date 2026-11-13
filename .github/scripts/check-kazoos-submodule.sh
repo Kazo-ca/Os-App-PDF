@@ -3,8 +3,9 @@
 # on the release tag of the version it declares (build/Versions.props). A local change of the OS
 # can therefore never reach a published build.
 #
-# Kazo Pdf, until Kazo OS 3.3.3 is tagged and published (doc/en/plan.md, decision 2): with
-# KAZOOS_BRANCH set (main), the submodule may instead sit on a commit of that branch of Kazo-ca/Os. CI then builds the source profile, and nothing is
+# Kazo Pdf, until the Kazo OS release that brings ADR 0264 is tagged and published (doc/en/plan.md,
+# decisions 2 and 10): with KAZOOS_BRANCH set, the submodule may instead sit on a commit of that
+# branch of Kazo-ca/Os. CI then builds the source profile, and nothing is
 # published: the Store waits for the release (work item 4 removes KAZOOS_BRANCH).
 set -euo pipefail
 
