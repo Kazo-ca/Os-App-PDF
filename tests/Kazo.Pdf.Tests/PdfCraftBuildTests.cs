@@ -33,6 +33,10 @@ public sealed partial class PdfCraftBuildTests
         Assert.Equal("source-build", kind);
         Assert.Equal(SubmoduleCommit(), source.GetProperty("commit").GetString());
         Assert.Equal("https://github.com/Kazo-ca/pdfcraft.git", source.GetProperty("repository").GetString());
+
+        // PdfCraft's web release embeds craft-i18n at its pin: a build without it would show
+        // English only, whatever language the OS speaks.
+        Assert.Matches("^[0-9a-f]{40}$", source.GetProperty("craftI18n").GetString());
     }
 
     [Fact]

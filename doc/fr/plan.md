@@ -135,4 +135,5 @@ Textes préparés par Claude en anglais, publiés par Benoit (pas de mention d'a
 - [x] Plan fr et en.
 - [x] Réponses de Benoit à Q1, Q2 et Q3 (A, A, B).
 - [x] Chantier 1 : solution et fenêtre (`pdf/1-solution`).
-- [ ] Chantiers 2 à 4.
+- [x] Chantier 2 : build depuis le fork `Kazo-ca/pdfcraft` (`pdf/2-build-from-source`).
+- [ ] Chantiers 3 et 4.
