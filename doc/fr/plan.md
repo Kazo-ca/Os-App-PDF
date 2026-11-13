@@ -56,15 +56,19 @@ zip officiel `pdfcraft-web-0.21.1.zip`.
 
 | # | Sujet | Décision |
 | --- | --- | --- |
-| 1 | Nom et identité | « **Kazo Pdf** » (Benoit, 2026-11-13). Id `ca.kazo.pdf`, éditeur `pub.kazo`, assembly `Kazo.Pdf`, catégorie `productivity`, plusieurs fenêtres, 1440 × 920, minimum 480 × 520. |
+| 1 | Nom et identité | « **Kazo Pdf** » (Benoit, 2026-11-13). Id `ca.kazo.pdf`, éditeur `pub.kazo`, assembly `Kazo.Pdf`, catégorie `productivity`, plusieurs fenêtres, fenêtre de 1200 × 820 (le 1440 × 920 du bureau dépasse un écran de portable une fois la barre des tâches comptée), contenu minimum 480 × 520. |
 | 2 | Code commun | Module `Kazo.Os.AppSdk.Craft` (ADR 0259). Version minimale : **Kazo OS 3.3.3** (module, `canChangeScreen` de l'ADR 0263, `?autolaunch`), sauf si Q1 demande une version plus récente. |
 | 3 | Changement d'écran | `canChangeScreen: false` dans le manifeste dès le chantier 1 (issue [#2](https://github.com/Kazo-ca/Os-App-PDF/issues/2)). |
 | 4 | Intégration | Une iframe par fenêtre, page `wwwroot/host/index.html` avec le canevas `pdfcraft` `data-host="page"` `data-craft-app="pdfcraft"`, paramètre `control` pour `window.pdfcraft`. `models/` et le worker OCR doivent se trouver relatifs à la page : la page porte une `<base>` vers `../pdfcraft/` (ou le build est rangé à côté d'elle), et `tools/vendor-pdfcraft.sh` écrit la balise `pdfcraft-ocr-worker` (le nom du worker a un hash). Choisi au chantier 1. |
 | 5 | Provenance du build | Comme Kazo Spreadsheets : d'abord le **zip officiel 0.21.1** épinglé par SHA-256 dans `wwwroot/pdfcraft/` avec `pdfcraft.json` ; ensuite compilé depuis le fork `Kazo-ca/pdfcraft` (branche `kazo/v0.21.1`). |
 | 6 | Garde de fermeture | Lue dans `ui.state` (`documents[{ doc, name, path, dirty }]`), pas dans `ui.inspect`. La fenêtre la lit elle-même tant que `OpenDocument.ListFrom` du module ne connaît pas cette troisième forme (retour envoyé au module). |
 | 7 | Thème et langue | `ui.set { theme }` à chaque changement du thème de l'OS, `ui.set { language }` au démarrage (`CraftLanguage.Pick` sur la liste des 26 codes). |
+| 8 | Sélecteur de fichiers | Le module ne dit pas pourquoi PdfCraft demande un fichier (ouvrir, insérer des pages, comparer, image à placer…). Tout fichier choisi est rendu à PdfCraft ; un seul `.pdf` choisi est lié à la fenêtre sous son nom seulement si aucun document ne porte déjà ce nom. |
+| 9 | Réponses de Benoit (2026-11-13) | Q1 = **A** (le module intercepte les exports, ADR 0264 dans `Kazo-ca/Os`), Q2 = **A** (modèles OCR dans le paquet), Q3 = **B** (`.pdf` seulement). |
 
 ## Questions posées à Benoit
+
+Réponses le 2026-11-13 : Q1 = A, Q2 = A, Q3 = B (décision 9).
 
 **Q1. Les exports partent dans les téléchargements du navigateur.** Exporter, Imprimer en PDF,
 Réduire la taille, copie signée, OCR, données de formulaire : PdfCraft les « télécharge » par un
@@ -109,7 +113,7 @@ un seul chantier.
 | N° | Branche | Contenu | Dépend de |
 | --- | --- | --- | --- |
 | 0 | `pdf/0-plan` | ce plan (fr et en) | — |
-| 1 | `pdf/1-solution` | solution renommée (`Kazo.Pdf`, `.Os`, `.Tests`), manifeste (`canChangeScreen: false`, OS 3.3.3, formats selon Q3), `tools/vendor-pdfcraft.sh` (zip 0.21.1 épinglé, modèles selon Q2, balise du worker) et `pdfcraft.json`, page d'iframe ; fenêtre sur le module : ouvrir, enregistrer, Enregistrer sous, garde de fermeture (`ui.state`), sélecteur, raccourcis, thème, langue, auteur, réglages ; deux fenêtres ; tests xUnit et parcours Playwright ; sous-module de l'OS sur `main` (3.3.3) jusqu'à l'étiquette `v3.3.3` | plan fusionné |
+| 1 | `pdf/1-solution` | solution renommée (`Kazo.Pdf`, `.Os`, `.Tests`), manifeste (`canChangeScreen: false`, OS 3.3.3, `.pdf` seulement), `tools/vendor-pdfcraft.sh` (zip 0.21.1 épinglé, modèles selon Q2, balise du worker) et `pdfcraft.json`, page d'iframe ; fenêtre sur le module : ouvrir, enregistrer, Enregistrer sous, garde de fermeture (`ui.state`), sélecteur, raccourcis, thème, langue, auteur, réglages ; deux fenêtres ; tests xUnit et parcours Playwright ; sous-module de l'OS sur `main` (3.3.3) jusqu'à l'étiquette `v3.3.3` | plan fusionné |
 | 2 | `pdf/2-build-from-source` | fork `Kazo-ca/pdfcraft` en sous-module (branche `kazo/v0.21.1`), `tools/build-pdfcraft.sh` (`craft-i18n` épinglé, `cargo xtask models`), workflow `build-pdfcraft.yml`, test du commit | chantier 1 |
 | 3 | `pdf/3-exports` | selon Q1 : la fenêtre reçoit les exports comme copies (A, après le chantier de l'OS), ou rien ici (B) | chantier 1, réponse à Q1 |
 | 4 | `pdf/4-store` | icône sans logo ArtCraft, fiche fr et en, README refait sur la fiche (`store:readme`, « Essayer » avec `?autolaunch=ca.kazo.pdf`), `THIRD-PARTY-NOTICES.md`, installation dans un Kazo OS publié, tag par « Tag a release », catalogue (signature dans `Os-AppMarketPlace`), `features.md` | chantiers 1 à 3, version de l'OS demandée |
@@ -129,5 +133,5 @@ Textes préparés par Claude en anglais, publiés par Benoit (pas de mention d'a
 
 - [x] Étape 0 : lecture de PdfCraft 0.21.1 et du zip officiel.
 - [x] Plan fr et en.
-- [ ] Réponses de Benoit à Q1, Q2 et Q3.
+- [x] Réponses de Benoit à Q1, Q2 et Q3 (A, A, B).
 - [ ] Chantiers 1 à 4.

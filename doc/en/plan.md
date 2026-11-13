@@ -56,15 +56,19 @@ official zip `pdfcraft-web-0.21.1.zip`.
 
 | # | Topic | Decision |
 | --- | --- | --- |
-| 1 | Name and identity | "**Kazo Pdf**" (Benoit, 2026-11-13). Id `ca.kazo.pdf`, publisher `pub.kazo`, assembly `Kazo.Pdf`, category `productivity`, several windows, 1440 × 920, minimum 480 × 520. |
+| 1 | Name and identity | "**Kazo Pdf**" (Benoit, 2026-11-13). Id `ca.kazo.pdf`, publisher `pub.kazo`, assembly `Kazo.Pdf`, category `productivity`, several windows, 1200 × 820 window (the desktop's 1440 × 920 is larger than a laptop screen once the taskbar counts), minimum content 480 × 520. |
 | 2 | Shared code | Module `Kazo.Os.AppSdk.Craft` (ADR 0259). Minimum version: **Kazo OS 3.3.3** (module, `canChangeScreen` from ADR 0263, `?autolaunch`), unless Q1 needs a newer one. |
 | 3 | Screen change | `canChangeScreen: false` in the manifest from work item 1 (issue [#2](https://github.com/Kazo-ca/Os-App-PDF/issues/2)). |
 | 4 | Integration | One iframe per window, page `wwwroot/host/index.html` with the canvas `pdfcraft` `data-host="page"` `data-craft-app="pdfcraft"`, parameter `control` for `window.pdfcraft`. `models/` and the OCR worker must resolve relative to the page: the page carries a `<base>` to `../pdfcraft/` (or the build sits next to it), and `tools/vendor-pdfcraft.sh` writes the `pdfcraft-ocr-worker` tag (the worker name has a hash). Chosen in work item 1. |
 | 5 | Build provenance | As in Kazo Spreadsheets: first the **official 0.21.1 zip** pinned by SHA-256 in `wwwroot/pdfcraft/` with `pdfcraft.json`; then built from the fork `Kazo-ca/pdfcraft` (branch `kazo/v0.21.1`). |
 | 6 | Close guard | Read from `ui.state` (`documents[{ doc, name, path, dirty }]`), not from `ui.inspect`. The window reads it itself until the module's `OpenDocument.ListFrom` knows this third shape (feedback sent to the module). |
 | 7 | Theme and language | `ui.set { theme }` on every OS theme change, `ui.set { language }` at startup (`CraftLanguage.Pick` on the list of 26 codes). |
+| 8 | File picker | The module does not say why PdfCraft asks for a file (open, insert pages, compare, image to place…). Every picked file is handed to PdfCraft; a single picked `.pdf` is bound to the window under its name only when no document already has that name. |
+| 9 | Benoit's answers (2026-11-13) | Q1 = **A** (the module intercepts exports, ADR 0264 in `Kazo-ca/Os`), Q2 = **A** (OCR models in the package), Q3 = **B** (`.pdf` only). |
 
 ## Questions asked to Benoit
+
+Answered on 2026-11-13: Q1 = A, Q2 = A, Q3 = B (decision 9).
 
 **Q1. Exports go to the browser's downloads.** Export, Print to PDF, Reduce size, signed copy,
 OCR, form data: PdfCraft "downloads" them through an `<a download>` link instead of handing them
@@ -105,7 +109,7 @@ item here.
 | No. | Branch | Content | Depends on |
 | --- | --- | --- | --- |
 | 0 | `pdf/0-plan` | this plan (fr and en) | — |
-| 1 | `pdf/1-solution` | renamed solution (`Kazo.Pdf`, `.Os`, `.Tests`), manifest (`canChangeScreen: false`, OS 3.3.3, formats per Q3), `tools/vendor-pdfcraft.sh` (pinned 0.21.1 zip, models per Q2, worker tag) and `pdfcraft.json`, iframe page; window on the module: open, save, Save As, close guard (`ui.state`), picker, shortcuts, theme, language, author, settings; two windows; xUnit tests and Playwright journeys; OS submodule on `main` (3.3.3) until the `v3.3.3` tag | plan merged |
+| 1 | `pdf/1-solution` | renamed solution (`Kazo.Pdf`, `.Os`, `.Tests`), manifest (`canChangeScreen: false`, OS 3.3.3, `.pdf` only), `tools/vendor-pdfcraft.sh` (pinned 0.21.1 zip, models per Q2, worker tag) and `pdfcraft.json`, iframe page; window on the module: open, save, Save As, close guard (`ui.state`), picker, shortcuts, theme, language, author, settings; two windows; xUnit tests and Playwright journeys; OS submodule on `main` (3.3.3) until the `v3.3.3` tag | plan merged |
 | 2 | `pdf/2-build-from-source` | fork `Kazo-ca/pdfcraft` as a submodule (branch `kazo/v0.21.1`), `tools/build-pdfcraft.sh` (pinned `craft-i18n`, `cargo xtask models`), workflow `build-pdfcraft.yml`, commit test | work item 1 |
 | 3 | `pdf/3-exports` | per Q1: the window receives exports as copies (A, after the OS work item), or nothing here (B) | work item 1, answer to Q1 |
 | 4 | `pdf/4-store` | icon without the ArtCraft logo, fr and en listing, README rebuilt on the listing (`store:readme`, "Try it" with `?autolaunch=ca.kazo.pdf`), `THIRD-PARTY-NOTICES.md`, install in a published Kazo OS, tag through "Tag a release", catalogue (signing in `Os-AppMarketPlace`), `features.md` | work items 1 to 3, required OS version |
@@ -125,5 +129,5 @@ Texts prepared by Claude in English, published by Benoit (no mention of an agent
 
 - [x] Step 0: reading PdfCraft 0.21.1 and the official zip.
 - [x] Plan fr and en.
-- [ ] Benoit's answers to Q1, Q2 and Q3.
+- [x] Benoit's answers to Q1, Q2 and Q3 (A, A, B).
 - [ ] Work items 1 to 4.
