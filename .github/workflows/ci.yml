@@ -30,7 +30,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  KAZOOS_BRANCH: craft-exports/1-module
+  KAZOOS_BRANCH: craft-exports/base
   KAZOOS_USE_SOURCE: "true"
 
 jobs:
