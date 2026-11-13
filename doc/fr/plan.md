@@ -102,17 +102,17 @@ dossier Téléchargements de l'ordinateur réel, pas dans le système de fichier
 ## Chantiers
 
 Série `pdf/base`, une branche `pdf/<n>-<sujet>` et une PR vers `pdf/base` par chantier. Benoit
-fusionne `pdf/base` dans `main`. Comme pour Kazo Spreadsheets, le module fait une grande part des
-chantiers 2 et 3 du guide : ils sont réunis.
+fusionne `pdf/base` dans `main`. Le module fait une grande part des chantiers 1 à 3 du guide, et
+Kazo Spreadsheets a déjà écrit une fenêtre complète sur lui : la solution et la fenêtre forment ici
+un seul chantier.
 
 | N° | Branche | Contenu | Dépend de |
 | --- | --- | --- | --- |
 | 0 | `pdf/0-plan` | ce plan (fr et en) | — |
-| 1 | `pdf/1-solution` | solution renommée (`Kazo.Pdf`, `.Os`, `.Tests`), manifeste (`canChangeScreen: false`, OS 3.3.3), `tools/vendor-pdfcraft.sh` (zip 0.21.1 épinglé, modèles selon Q2, balise du worker) et `pdfcraft.json`, page d'iframe, sous-module de l'OS sur 3.3.3 ; tests du manifeste et de la provenance | plan fusionné |
-| 2 | `pdf/2-window` | fenêtre sur le module : formats (Q3), ouvrir, enregistrer, Enregistrer sous, garde de fermeture (`ui.state`), sélecteur, raccourcis, thème, langue, auteur, réglages ; deux fenêtres ; OCR dans l'iframe ; parcours Playwright | chantier 1 |
-| 3 | `pdf/3-build-from-source` | fork `Kazo-ca/pdfcraft` en sous-module (branche `kazo/v0.21.1`), `tools/build-pdfcraft.sh` (`craft-i18n` épinglé, `cargo xtask models`), workflow `build-pdfcraft.yml`, test du commit | chantier 1 ; en parallèle du 2 |
-| 4 | `pdf/4-exports` | selon Q1 : la fenêtre reçoit les exports comme copies (A, après le chantier de l'OS), ou rien ici (B) | chantier 2, réponse à Q1 |
-| 5 | `pdf/5-store` | icône sans logo ArtCraft, fiche fr et en, README refait sur la fiche (`store:readme`, « Essayer » avec `?autolaunch=ca.kazo.pdf`), `THIRD-PARTY-NOTICES.md`, installation dans un Kazo OS publié, tag par « Tag a release », catalogue (signature dans `Os-AppMarketPlace`), `features.md` | chantiers 2 à 4, version de l'OS demandée |
+| 1 | `pdf/1-solution` | solution renommée (`Kazo.Pdf`, `.Os`, `.Tests`), manifeste (`canChangeScreen: false`, OS 3.3.3, formats selon Q3), `tools/vendor-pdfcraft.sh` (zip 0.21.1 épinglé, modèles selon Q2, balise du worker) et `pdfcraft.json`, page d'iframe ; fenêtre sur le module : ouvrir, enregistrer, Enregistrer sous, garde de fermeture (`ui.state`), sélecteur, raccourcis, thème, langue, auteur, réglages ; deux fenêtres ; tests xUnit et parcours Playwright ; sous-module de l'OS sur `main` (3.3.3) jusqu'à l'étiquette `v3.3.3` | plan fusionné |
+| 2 | `pdf/2-build-from-source` | fork `Kazo-ca/pdfcraft` en sous-module (branche `kazo/v0.21.1`), `tools/build-pdfcraft.sh` (`craft-i18n` épinglé, `cargo xtask models`), workflow `build-pdfcraft.yml`, test du commit | chantier 1 |
+| 3 | `pdf/3-exports` | selon Q1 : la fenêtre reçoit les exports comme copies (A, après le chantier de l'OS), ou rien ici (B) | chantier 1, réponse à Q1 |
+| 4 | `pdf/4-store` | icône sans logo ArtCraft, fiche fr et en, README refait sur la fiche (`store:readme`, « Essayer » avec `?autolaunch=ca.kazo.pdf`), `THIRD-PARTY-NOTICES.md`, installation dans un Kazo OS publié, tag par « Tag a release », catalogue (signature dans `Os-AppMarketPlace`), `features.md` | chantiers 1 à 3, version de l'OS demandée |
 
 **Terminé quand** : Kazo Pdf s'installe depuis le Store d'un Kazo OS publié, ouvre un `.pdf` par
 double-clic, l'enregistre, et deux fenêtres tournent ensemble.
@@ -130,4 +130,4 @@ Textes préparés par Claude en anglais, publiés par Benoit (pas de mention d'a
 - [x] Étape 0 : lecture de PdfCraft 0.21.1 et du zip officiel.
 - [x] Plan fr et en.
 - [ ] Réponses de Benoit à Q1, Q2 et Q3.
-- [ ] Chantiers 1 à 5.
+- [ ] Chantiers 1 à 4.

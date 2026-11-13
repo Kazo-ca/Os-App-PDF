@@ -98,17 +98,17 @@ file system.
 ## Work items
 
 Series `pdf/base`, one branch `pdf/<n>-<topic>` and one PR to `pdf/base` per work item. Benoit
-merges `pdf/base` into `main`. As for Kazo Spreadsheets, the module does a large part of the
-guide's work items 2 and 3: they are merged.
+merges `pdf/base` into `main`. The module does a large part of the guide's work items 1 to 3, and
+Kazo Spreadsheets already wrote a full window on it: the solution and the window make one work
+item here.
 
 | No. | Branch | Content | Depends on |
 | --- | --- | --- | --- |
 | 0 | `pdf/0-plan` | this plan (fr and en) | — |
-| 1 | `pdf/1-solution` | renamed solution (`Kazo.Pdf`, `.Os`, `.Tests`), manifest (`canChangeScreen: false`, OS 3.3.3), `tools/vendor-pdfcraft.sh` (pinned 0.21.1 zip, models per Q2, worker tag) and `pdfcraft.json`, iframe page, OS submodule on 3.3.3; manifest and provenance tests | plan merged |
-| 2 | `pdf/2-window` | window on the module: formats (Q3), open, save, Save As, close guard (`ui.state`), picker, shortcuts, theme, language, author, settings; two windows; OCR in the iframe; Playwright journeys | work item 1 |
-| 3 | `pdf/3-build-from-source` | fork `Kazo-ca/pdfcraft` as a submodule (branch `kazo/v0.21.1`), `tools/build-pdfcraft.sh` (pinned `craft-i18n`, `cargo xtask models`), workflow `build-pdfcraft.yml`, commit test | work item 1; in parallel with 2 |
-| 4 | `pdf/4-exports` | per Q1: the window receives exports as copies (A, after the OS work item), or nothing here (B) | work item 2, answer to Q1 |
-| 5 | `pdf/5-store` | icon without the ArtCraft logo, fr and en listing, README rebuilt on the listing (`store:readme`, "Try it" with `?autolaunch=ca.kazo.pdf`), `THIRD-PARTY-NOTICES.md`, install in a published Kazo OS, tag through "Tag a release", catalogue (signing in `Os-AppMarketPlace`), `features.md` | work items 2 to 4, required OS version |
+| 1 | `pdf/1-solution` | renamed solution (`Kazo.Pdf`, `.Os`, `.Tests`), manifest (`canChangeScreen: false`, OS 3.3.3, formats per Q3), `tools/vendor-pdfcraft.sh` (pinned 0.21.1 zip, models per Q2, worker tag) and `pdfcraft.json`, iframe page; window on the module: open, save, Save As, close guard (`ui.state`), picker, shortcuts, theme, language, author, settings; two windows; xUnit tests and Playwright journeys; OS submodule on `main` (3.3.3) until the `v3.3.3` tag | plan merged |
+| 2 | `pdf/2-build-from-source` | fork `Kazo-ca/pdfcraft` as a submodule (branch `kazo/v0.21.1`), `tools/build-pdfcraft.sh` (pinned `craft-i18n`, `cargo xtask models`), workflow `build-pdfcraft.yml`, commit test | work item 1 |
+| 3 | `pdf/3-exports` | per Q1: the window receives exports as copies (A, after the OS work item), or nothing here (B) | work item 1, answer to Q1 |
+| 4 | `pdf/4-store` | icon without the ArtCraft logo, fr and en listing, README rebuilt on the listing (`store:readme`, "Try it" with `?autolaunch=ca.kazo.pdf`), `THIRD-PARTY-NOTICES.md`, install in a published Kazo OS, tag through "Tag a release", catalogue (signing in `Os-AppMarketPlace`), `features.md` | work items 1 to 3, required OS version |
 
 **Done when**: Kazo Pdf installs from the Store of a published Kazo OS, opens a `.pdf` by
 double-click, saves it, and two windows run together.
@@ -126,4 +126,4 @@ Texts prepared by Claude in English, published by Benoit (no mention of an agent
 - [x] Step 0: reading PdfCraft 0.21.1 and the official zip.
 - [x] Plan fr and en.
 - [ ] Benoit's answers to Q1, Q2 and Q3.
-- [ ] Work items 1 to 5.
+- [ ] Work items 1 to 4.
