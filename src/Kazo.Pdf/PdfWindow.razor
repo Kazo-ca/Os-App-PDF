@@ -1,0 +1,33 @@
+@inherits WindowAppBase
+
+<div class="pdf-window" role="application" aria-label="@L["EditorLabel"]">
+    @* craft-host.js (Kazo.Os.AppSdk.Craft) puts PdfCraft's iframe in this element; it stays hidden until PdfCraft is ready. *@
+    <div class="pdf-frame @(_startup.State == FrameState.Running ? "running" : string.Empty)" @ref="_frameHost"></div>
+
+    @if (_startup.State == FrameState.Loading)
+    {
+        <div class="pdf-screen" role="status">
+            <div class="pdf-spinner" aria-hidden="true"></div>
+            <p class="pdf-screen-title">@L["Loading"]</p>
+            <p class="pdf-screen-hint">@L["LoadingHint"]</p>
+        </div>
+    }
+    else if (_startup.State == FrameState.Failed)
+    {
+        <div class="pdf-screen failed" role="alert">
+            <p class="pdf-screen-title">@L["FailedTitle"]</p>
+            <p class="pdf-screen-detail">@FailureText</p>
+            <p class="pdf-screen-hint">@L["FailedHint"]</p>
+            <button type="button" class="pdf-retry" @onclick="RetryAsync">@L["Retry"]</button>
+        </div>
+    }
+
+    @if (_notice is not null)
+    {
+        @* Over PdfCraft, at the bottom right: a failed write, a cancelled save, a copy written. *@
+        <div class="pdf-notice @(_noticeIsError ? "error" : string.Empty)" role="@(_noticeIsError ? "alert" : "status")">
+            <span class="pdf-notice-text">@_notice</span>
+            <button type="button" class="pdf-notice-close" aria-label="@L["Dismiss"]" @onclick="DismissNotice">×</button>
+        </div>
+    }
+</div>

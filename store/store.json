@@ -1,7 +1,7 @@
 {
-  "repository": "https://github.com/example/Os-App-MyApp",
-  "project": "src/Kazo.Os.App/Kazo.Os.App.csproj",
+  "repository": "https://github.com/Kazo-ca/Os-App-PDF",
+  "project": "src/Kazo.Pdf/Kazo.Pdf.csproj",
   "category": "productivity",
-  "tags": ["sample"],
+  "tags": ["pdf", "documents", "office"],
   "license": "MIT"
 }

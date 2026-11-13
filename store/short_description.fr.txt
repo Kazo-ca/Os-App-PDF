@@ -1,1 +1,1 @@
-Une app fenêtrée Kazo OS créée avec le modèle kazoos-solution.
+Un lecteur et éditeur de PDF pour Kazo OS, construit sur PdfCraft.

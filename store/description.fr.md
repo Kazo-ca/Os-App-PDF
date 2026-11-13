@@ -1,5 +1,5 @@
-# Kazo.Os.App
+# Kazo Pdf
 
-Décrivez votre app ici : ce qu'elle fait, comment s'en servir, ce dont elle a besoin.
+Lire, annoter, remplir, signer et modifier des fichiers PDF dans Kazo OS : pages, texte, formulaires, commentaires, reconnaissance de texte (OCR) et plus. Construit sur PdfCraft (équipe ArtCraft).
 
-Ce texte est affiché sur la fiche de l'app dans le Kazo OS Store.
+La fiche complète arrive avec le chantier du Store.
