@@ -1,53 +1,18 @@
-# Builds and tests the Release profile: the Kazo OS packages from nuget.org, at the version of the
-# submodule (ADR 0176 §4, §6). This is what the Kazo OS Store compiles.
-#
-# workflow_call lets the PdfCraft build workflow (work item 2) test the branch it pushes, since a
-# push made with the workflow token starts no workflow.
+# CI of the app: builds and tests the Release profile, the Kazo OS packages from nuget.org at the
+# version of the submodule (ADR 0176 §4, §6). This is what the Kazo OS Store compiles. Only the
+# Kazo OS submodule is fetched: the app uses the PdfCraft build committed in wwwroot/pdfcraft/, and
+# PdfCraft's sources are only needed to compile it (build-pdfcraft.yml).
+# The steps live in the reusable workflow kazoos-ci.yml of Kazo-ca/Os-AppTemplate (ADR 0271 §7).
 name: CI
 
 on:
   push:
-    branches: [main, "pdf/base"]
+    branches: [main, beta]
   pull_request:
-  workflow_call:
-    inputs:
-      ref:
-        description: Branch to check out and test
-        type: string
-        required: true
 
 permissions:
   contents: read
 
-concurrency:
-  group: "ci-${{ inputs.ref || github.ref }}"
-  cancel-in-progress: true
-
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.ref || '' }}
-
-      # Only the Kazo OS submodule: the app uses the PdfCraft build in wwwroot/pdfcraft/, and
-      # PdfCraft's sources (work item 2) are only needed to compile it.
-      - name: Fetch the Kazo OS submodule
-        run: git submodule update --init --depth 1 external/KazoOs
-
-      - uses: actions/setup-dotnet@v4
-        with:
-          global-json-file: global.json
-
-      - name: Check the Kazo OS submodule
-        run: bash .github/scripts/check-kazoos-submodule.sh
-
-      - name: Check the README shows the Store listing
-        run: node .github/scripts/store-readme.mjs --check
-
-      - name: Build (Release)
-        run: dotnet build -c Release
-
-      - name: Test
-        run: dotnet test -c Release --no-build
+    uses: Kazo-ca/Os-AppTemplate/.github/workflows/kazoos-ci.yml@v1
