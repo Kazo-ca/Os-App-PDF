@@ -131,15 +131,23 @@ Force either one with `-p:KazoOsUseSource=true` or `false`.
 
 ### Publishing to the Kazo OS Store
 
-1. Fill `store/` (icon, short descriptions, descriptions, category and tags in `store.json`).
-2. Change `Version` in the app's `[AppManifest]` class and commit it to `main`, then tag it: run the
-   **Tag a release** workflow (Actions tab, or the GitHub API for an agent), which tags the head of
-   `main` with the manifest's version and starts the two publishing workflows; or push the tag
-   yourself: `git tag v1.0.0 && git push --tags`.
+1. Fill `store/` (icon, short descriptions, descriptions, screenshots, category and tags in
+   `store.json`), then run `npm run store:readme`: it copies the descriptions and screenshots to the
+   top of `README.md` and `readme-fr.md`, so the repository shows the same listing as the Store. CI
+   fails when a README differs from `store/`.
+2. Change `Version` in `PdfApp` (the `[AppManifest]` class) and commit it to `main` (or run
+   `bash .github/scripts/bump-app-version.sh src/Kazo.Pdf patch`, which also updates the committed
+   `manifest.json`), then tag it: run the **Tag a release** workflow (Actions tab, or the GitHub API
+   for an agent), which tags the head of `main` (or of `beta` for a beta version) with the manifest's
+   version and starts the two publishing workflows; or push the tag yourself:
+   `git tag v0.1.1 && git push --tags`.
 3. The **Publish to the Kazo OS Store** workflow builds the app and makes the catalog folder
-   `apps/<appId>_<version>/`. With a `HACK_STORE_TOKEN` secret (a token allowed to fork and open
-   pull requests), it opens the pull request to `Kazo-ca/Os-AppMarketPlace` from your fork;
-   without it, download the run's artifact and open the pull request yourself.
+   `apps/ca.kazo.pdf_<version>/`, then opens the pull request to `Kazo-ca/Os-AppMarketPlace`: to its
+   `main` branch for a stable version, to its `beta` branch for a version with a suffix
+   (`0.1.1-beta.1`). It uses the Kazo OS automation GitHub App (organization secrets
+   `KAZO_AUTOMATION_APP_ID` and `KAZO_AUTOMATION_APP_KEY`, branch `submit/ca.kazo.pdf_<version>` of
+   the catalog, no fork), otherwise a `HACK_STORE_TOKEN` secret (from the token owner's fork);
+   without either, download the run's artifact and open the pull request yourself.
 
 `HACK_STORE_TOKEN` is a GitHub personal access token of yours, not something Kazo OS gives you:
 
@@ -152,13 +160,31 @@ Force either one with `-p:KazoOsUseSource=true` or `false`.
 `repo` reaches all your repositories: keep the token only in this secret and revoke it if in doubt.
 
 The catalog never takes a binary from you: once your pull request is reviewed and merged, its CI
-compiles the app at the tagged commit.
+compiles the app at the tagged commit. Nothing is signed in this repository.
+
+### Following new Kazo OS versions
+
+The **Kazo OS SDK update** workflow (`sdk-update.yml`) runs every hour, when Kazo OS announces a
+release (`repository_dispatch` `kazoos-sdk-released`), or by hand from the Actions tab. When Kazo OS
+has a newer version, it moves the submodule to it, raises the app's version
+(`.github/scripts/bump-app-version.sh`) on a `kazoos-sdk/<version>` branch and runs the CI there:
+
+- a Kazo OS pre-release: the `beta` branch takes it, as version `x.y.(z+1)-beta.<n>`, which goes to
+  the beta channel of the Kazo OS Store;
+- a minor or major stable release: a pull request to `main`, merged, tagged and published;
+- a patch stable release: checked only, nothing is published.
+
+A red CI opens a `TODO` issue and changes nothing. It only moves the Kazo OS submodule and the
+app's version: the PdfCraft build in `src/Kazo.Pdf/wwwroot/pdfcraft/` changes only through
+**Build PdfCraft**. The workflows of this repository are short: they call the shared workflows of
+[Kazo-ca/Os-AppTemplate](https://github.com/Kazo-ca/Os-AppTemplate) (`@v1`), so they improve
+without a change here; **Build PdfCraft** (`build-pdfcraft.yml`) is the only one of its own.
 
 ### Publishing on the `kazoos-packages` branch
 
 The same `v*` tag also runs **Publish the Kazo OS packages**: it packs the app and pushes it to the
 `kazoos-packages` branch of this repository, keeping the versions already published. Kazo OS
-users then install it with `kazopkg install <owner>/<repo>`, without the Kazo OS Store.
+users then install it with `kazopkg install Kazo-ca/Os-App-Pdf`, without the Kazo OS Store.
 
 These packages are not signed: apps are signed only in the Kazo OS Store repository
 (`Kazo-ca/Os-AppMarketPlace`), when it builds your app from the catalog (ADR 0219). Kazo OS checks

@@ -5,9 +5,9 @@
 # Actions tab.
 #
 # - Run by hand (workflow_dispatch): build, commit the build on a new branch
-#   pdfcraft/build-<version>-<commit>, run the whole CI on that branch (ci.yml, called here
-#   because a push made with the workflow token starts no workflow), then open a PR to the branch
-#   the workflow ran on.
+#   pdfcraft/build-<version>-<commit>, run the whole CI on that branch (the shared kazoos-ci.yml
+#   of Kazo-ca/Os-AppTemplate, called here because a push made with the workflow token starts no
+#   workflow), then open a PR to the branch the workflow ran on.
 # - On a PR that touches the build (submodule, scripts, this file): build only, so a submodule
 #   move or a script change is known to compile before it is merged. Nothing is pushed.
 name: Build PdfCraft
@@ -121,7 +121,7 @@ jobs:
   test:
     needs: build
     if: needs.build.outputs.branch != ''
-    uses: ./.github/workflows/ci.yml
+    uses: Kazo-ca/Os-AppTemplate/.github/workflows/kazoos-ci.yml@v1
     with:
       ref: ${{ needs.build.outputs.branch }}
 
