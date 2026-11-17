@@ -2,6 +2,11 @@
   "appId": "ca.kazo.pdf",
   "versions": [
     {
+      "version": "0.1.2",
+      "path": "0.1.2/ca.kazo.pdf-0.1.2.kazoapp",
+      "sha256": "208ed3e41c76a613e63debafeec10707e94e04374c72d72f738a5341ea695929"
+    },
+    {
       "version": "0.1.1",
       "path": "0.1.1/ca.kazo.pdf-0.1.1.kazoapp",
       "sha256": "259e7b19cea8e83ea421f8bcb6b14231a0b6263c14dd9ec6e68eea21a7f0ae4f"
