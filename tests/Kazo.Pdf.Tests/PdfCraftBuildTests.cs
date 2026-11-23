@@ -23,7 +23,7 @@ public sealed partial class PdfCraftBuildTests
         if (kind == "release-zip")
         {
             // tools/vendor-pdfcraft.sh without --dir: the pinned official zip.
-            Assert.Equal("0.21.1", Provenance.GetProperty("version").GetString());
+            Assert.Equal("0.22.0", Provenance.GetProperty("version").GetString());
             Assert.Equal("fe9708d46af191aebb56f70eb32cf8b112b0b9452d17ae6ba3a8c4a8665fe748", source.GetProperty("sha256").GetString());
             return;
         }
@@ -49,7 +49,7 @@ public sealed partial class PdfCraftBuildTests
     public void The_wasm_stays_under_the_Kazo_OS_and_GitHub_file_size_limits()
     {
         // ADR 0245 of Kazo OS: 128 MiB per file; GitHub refuses a pushed file over 100 MB.
-        // PdfCraft 0.21.1 is 60.6 MB.
+        // PdfCraft 0.22.0 is 69.1 MB.
         const long maximumFileBytes = 100L * 1000 * 1000;
         FileInfo wasm = new(Path.Combine(BuildFolder, Provenance.GetProperty("wasm").GetString()!));
         Assert.InRange(wasm.Length, 1, maximumFileBytes);

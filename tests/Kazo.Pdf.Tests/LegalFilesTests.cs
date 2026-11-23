@@ -58,6 +58,10 @@ public sealed class LegalFilesTests
     [InlineData("LICENSE_FOXIT")]
     [InlineData("edit-session-LICENSE-MIT")]
     [InlineData("edit-session-LICENSE-APACHE")]
+    [InlineData("hayro-LICENSE-MIT")]
+    [InlineData("hayro-LICENSE-APACHE")]
+    [InlineData("hayro-interpret-LICENSE-MIT")]
+    [InlineData("hayro-interpret-LICENSE-APACHE")]
     public void The_license_files_PdfCraft_NOTICE_refers_to_ship_in_the_package(string file)
     {
         // PdfCraft's web release names these files in its NOTICE but does not carry them: they

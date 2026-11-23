@@ -9,9 +9,10 @@ namespace Kazo.Pdf.Hosting;
 /// </summary>
 /// <remarks>
 /// The choice is the module's <see cref="CraftLanguage.Pick"/>: the regional code PdfCraft lists
-/// (<c>pt-br</c>), else the two-letter one. PdfCraft 0.21.1 has 26 languages (<c>LANGUAGES</c> in
-/// its <c>i18n.rs</c>). Simplified and traditional Chinese stay English: the web build has no
-/// Chinese font, so their labels would not draw (PdfCraft's own gap 5).
+/// (<c>pt-br</c>), else the two-letter one. PdfCraft 0.22.0 has 36 languages (<c>LANGUAGES</c> in
+/// its <c>i18n.rs</c>). Simplified and traditional Chinese, Korean, Thai, Lao and Hindi stay
+/// English: the web build embeds no craft-fonts face for those scripts, so their labels would not
+/// draw (PdfCraft's own gap 5).
 /// </remarks>
 public static class PdfCraftLanguage
 {
@@ -22,7 +23,8 @@ public static class PdfCraftLanguage
     public static IReadOnlyList<string> Supported { get; } =
     [
         "en", "ja", "cs", "pt-br", "de", "es", "fr", "ru", "kk", "bg", "te", "hu", "uk", "it",
-        "ar", "ckb", "fa", "pl", "sl", "el", "tr", "lt", "id", "vi",
+        "ar", "ckb", "fa", "pl", "sl", "bs", "el", "tr", "lt", "id", "vi", "fi", "sq", "ca", "ro",
+        "nb",
     ];
 
     /// <summary>The PdfCraft code for a culture.</summary>

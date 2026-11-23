@@ -16,6 +16,9 @@ public sealed class PdfCraftLanguageTests
     [InlineData("ja-JP", "ja")]
     [InlineData("ar-EG", "ar")]
     [InlineData("vi-VN", "vi")]
+    [InlineData("bs-BA", "bs")]
+    [InlineData("ro-RO", "ro")]
+    [InlineData("nb-NO", "nb")]
     public void A_language_PdfCraft_has_is_kept(string culture, string expected)
     {
         Assert.Equal(expected, PdfCraftLanguage.Pick(CultureInfo.GetCultureInfo(culture)));
@@ -25,6 +28,8 @@ public sealed class PdfCraftLanguageTests
     [InlineData("zh-CN")]
     [InlineData("zh-TW")]
     [InlineData("ko-KR")]
+    [InlineData("th-TH")]
+    [InlineData("hi-IN")]
     [InlineData("sv-SE")]
     [InlineData("nl-NL")]
     public void Other_languages_and_the_ones_the_web_build_cannot_draw_are_English(string culture)

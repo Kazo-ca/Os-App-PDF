@@ -17,9 +17,9 @@
 set -euo pipefail
 
 # The pinned release. Moving to another version changes these three lines, in a PR.
-version="0.21.1"
+version="0.22.0"
 zip_url="https://github.com/storytold/pdfcraft/releases/download/v${version}/pdfcraft-web-${version}.zip"
-zip_sha256="fe9708d46af191aebb56f70eb32cf8b112b0b9452d17ae6ba3a8c4a8665fe748"
+zip_sha256="5da6db0d6d0d5ae517e9bb62c39eb57285f8befd81ef6555e9a807ccf5da5954"
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 target="$repo_root/src/Kazo.Pdf/wwwroot/pdfcraft"
