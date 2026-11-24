@@ -15,7 +15,7 @@ including the text recognition models.
 | | |
 | --- | --- |
 | Work | [PdfCraft](https://github.com/storytold/pdfcraft), a PDF editor written in Rust, by the ArtCraft team and the PdfCraft contributors |
-| Version | 0.21.1, compiled from our fork [`Kazo-ca/pdfcraft`](https://github.com/Kazo-ca/pdfcraft) (branch `kazo/v0.21.1`, the upstream tag, unmodified) |
+| Version | 0.22.0, compiled from our fork [`Kazo-ca/pdfcraft`](https://github.com/Kazo-ca/pdfcraft) (branch `kazo/v0.22.0`, the upstream tag, unmodified) |
 | License | MIT or Apache-2.0, at the user's option |
 | Files | `src/Kazo.Pdf/wwwroot/pdfcraft/` (the web build: `.js`, `.wasm`, `snippets/`, the OCR worker, `models/`) |
 | Provenance | `src/Kazo.Pdf/wwwroot/pdfcraft/pdfcraft.json`: the fork's commit, the compilers, and the SHA-256 of every file |
@@ -36,7 +36,7 @@ PdfCraft's own notices ship **unmodified** next to its build, and in the install
 
 PdfCraft's `NOTICE` names license files of its source repository that its web release does not
 carry. Kazo Pdf ships them, copied unmodified from the fork at the bundled commit
-(`b503b2e62dfeec5598f344e4e287d9c9cbdb34fa`), in `src/Kazo.Pdf/wwwroot/legal/pdfcraft/`:
+(`ac140f809d554981a5276d748e6193fcf4d4bdfa`), in `src/Kazo.Pdf/wwwroot/legal/pdfcraft/`:
 
 | File | Source in PdfCraft | Covers |
 | --- | --- | --- |
@@ -47,8 +47,9 @@ carry. Kazo Pdf ships them, copied unmodified from the fork at the bundled commi
 | `ICU4X-LICENSE.txt` | `licenses/` | The ICU4X line-breaking data (Unicode-3.0) |
 | `CMap-LICENSE.txt` | `licenses/` | The CMap resources bundled by hayro-cmap (BSD-3-Clause) |
 | `prc-rs-LICENSE.txt` | `licenses/` | prc-rs |
-| `LICENSE_FOXIT` | `vendor/hayro-interpret/assets/` | The Foxit standard-14 substitute fonts (BSD-3-Clause) |
+| `LICENSE_FOXIT` | `licenses/pdf-backend/hayro-interpret/assets/` | The Foxit standard-14 substitute fonts (BSD-3-Clause) |
 | `edit-session-LICENSE-MIT`, `edit-session-LICENSE-APACHE` | `vendor/edit-session/` | edit-session |
+| `hayro-LICENSE-MIT`, `hayro-LICENSE-APACHE`, `hayro-interpret-LICENSE-MIT`, `hayro-interpret-LICENSE-APACHE` | `licenses/pdf-backend/hayro/`, `licenses/pdf-backend/hayro-interpret/` | hayro and hayro-interpret, PdfCraft's PDF backend (MIT or Apache-2.0) |
 
 PdfCraft's web release embeds no craft-fonts font.
 

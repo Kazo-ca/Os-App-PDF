@@ -5,5 +5,5 @@
 [submodule "external/pdfcraft"]
 	path = external/pdfcraft
 	url = https://github.com/Kazo-ca/pdfcraft.git
-	branch = kazo/v0.21.1
+	branch = kazo/v0.22.0
 	shallow = true

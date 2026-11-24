@@ -11,7 +11,7 @@ public static class PdfCraftBuild
     /// The PdfCraft version of the build. Kept equal to the <c>version</c> of
     /// <c>wwwroot/pdfcraft/pdfcraft.json</c> by a test.
     /// </summary>
-    public const string Version = "0.21.1";
+    public const string Version = "0.22.0";
 
     /// <summary>Folder of the build under the app's static files (<c>_content/Kazo.Pdf/</c>).</summary>
     public const string Folder = "pdfcraft";

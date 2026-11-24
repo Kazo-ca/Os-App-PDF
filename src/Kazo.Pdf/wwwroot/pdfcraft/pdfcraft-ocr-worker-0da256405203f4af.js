@@ -342,7 +342,7 @@ async function __wbg_init(module_or_path) {
     }
 
     if (module_or_path === undefined) {
-        module_or_path = new URL('pdfcraft-ocr-worker-08b77b90fe90080f_bg.wasm', import.meta.url);
+        module_or_path = new URL('pdfcraft-ocr-worker-0da256405203f4af_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 
